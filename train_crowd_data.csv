@@ -1,0 +1,9 @@
+Source,Destination,Preferred_Time,Best_Train,Departure,Arrival,Crowd_Level,Expected_Standing_Time,Seat_Likely_Available_After,Alternate_Train
+Vijayawada,Tirupati,Morning,12723,07:45,10:20,High,35 mins,Kazipet Jn,12761
+Guntur,Vizag,Afternoon,12711,12:10,15:30,Medium,15 mins,Tenali Jn,12762
+Nellore,Guntur,Evening,12733,18:00,21:10,Low,5 mins,Nellore,12711
+Tirupati,Vijayawada,Night,12761,22:30,01:15,High,45 mins,Gudur Jn,12723
+Vizag,Nellore,Morning,12762,06:00,09:00,Medium,20 mins,Rajahmundry,12733
+Guntur,Tirupati,Afternoon,12711,13:00,16:30,Medium,18 mins,Ongole,12761
+Vijayawada,Vizag,Night,12723,08:15,11:45,High,30 mins,Eluru,12733
+Nellore,Guntur,Evening,12733,19:00,22:30,Low,7 mins,Chirala,12711

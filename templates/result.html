@@ -1,0 +1,50 @@
+<!-- templates/result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">🚆 Suggested Train</h2>
+
+        <div class="card mb-4 p-4 shadow">
+            <h4>{{ result.train }}</h4>
+            <p><strong>Departure Time:</strong> 🕒 {{ result.departure }}</p>
+            <p><strong>Crowd Level:</strong> 📈 {{ result.crowd }}</p>
+            <p><strong>Standing Time:</strong> ⏳ {{ result.standing_time }}</p>
+            <p><strong>Seat Availability:</strong> 🪑 After {{ result.seat_available_after }}</p>
+            <p><strong>Arrival at Destination:</strong> 🧭 {{ result.arrival }}</p>
+            <button class="btn btn-dark">Book Now</button>
+        </div>
+
+        <div class="card p-3 shadow-sm mb-4">
+            <h5>💡 Alternate Suggestion</h5>
+            <p><strong>Train:</strong> {{ result.alternate_train }}</p>
+            <button class="btn btn-outline-primary">View Details</button>
+        </div>
+
+        <!-- Feedback Popup -->
+        <div class="card p-3 shadow-sm">
+            <h5>🗣️ Feedback</h5>
+            <form>
+                <div class="form-group">
+                    <label for="feedback">Was this prediction accurate?</label>
+                    <textarea class="form-control" id="feedback" placeholder="Your comments..."></textarea>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-secondary mr-2">Cancel</button>
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <p class="text-muted text-center mt-4">
+            🔔 This prediction is only for General Compartments in Indian Railways.
+        </p>
+    </div>
+</body>
+</html>

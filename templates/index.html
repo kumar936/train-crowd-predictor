@@ -1,0 +1,63 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Train Predictor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function swapStations() {
+            let src = document.getElementById("source");
+            let dest = document.getElementById("destination");
+            let temp = src.value;
+            src.value = dest.value;
+            dest.value = temp;
+        }
+    </script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">🚆 Train Predictor</h2>
+        <form method="POST" action="{{ url_for('predict') }}">
+            <div class="form-group">
+                <label for="source">Source Station</label>
+                <select name="source" id="source" class="form-control" required>
+                    {% for station in stations %}
+                        <option value="{{ station }}">{{ station }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="destination">Destination Station</label>
+                <div class="d-flex align-items-center">
+                    <select name="destination" id="destination" class="form-control mr-2" required>
+                        {% for station in stations %}
+                            <option value="{{ station }}">{{ station }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="button" class="btn btn-outline-secondary" onclick="swapStations()">⇄ Swap</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="time">Preferred Time</label>
+                <select name="time" id="time" class="form-control" required>
+                    {% for t in times %}
+                        <option value="{{ t }}">{{ t }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-dark btn-block">🎯 Find Best Train</button>
+        </form>
+
+        <!-- Optional loading animation -->
+        <div class="loading-container mt-3 text-center" style="display: none;">
+            <img src="{{ url_for('static', filename='train_loading.gif') }}" alt="Loading..." width="100">
+            <p>Finding the best train for you...</p>
+        </div>
+    </div>
+</body>
+</html>
